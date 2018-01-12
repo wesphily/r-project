@@ -1,5 +1,5 @@
 directory <- function(x){
-  setwd("D:/R/Company Test/specdata")
+  setwd("C:/R")
 }
 
 Complete <- function(x,y){
@@ -7,19 +7,16 @@ Complete <- function(x,y){
   data.list.dataframes <- lapply(dir(),read.csv)
   data.combine.dataframes <- do.call(rbind, data.list.dataframes)
   data.clean <- na.omit(data.combine.dataframes)
-  data.by.id <- data.clean[which(data.clean$ID == y),]
-  data.by.id
+  data.clean[which(data.clean$ID == y),]
 }
 
 
 Complete(directory, 9:10)
 
 
-
 Pollutantmean <- function(x,z,y){
-  Complete(x,y)
-  pulltant.mean <- mean(data.by.id[which(data.by.id$z == T),])
-  pulltant.mean
+  df <- Complete(x,y)
+  mean(df[["nitrate"]])
 }
 
 Pollutantmean(directory, nitrate, 9:10)
