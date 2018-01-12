@@ -9,12 +9,16 @@ Complete <- function(x,y){
   data.clean <- na.omit(data.combine.dataframes)
   data.by.id <- data.clean[which(data.clean$ID == y),]
   data.by.id
-  }
+}
+
+
 Complete(directory, 9:10)
+
+
 
 Pollutantmean <- function(x,z,y){
   Complete(x,y)
-  pulltant.mean <- mean(data.clean[which(data.clean$z == T),])
+  pulltant.mean <- mean(data.by.id[which(data.by.id$z == T),])
   pulltant.mean
 }
 
