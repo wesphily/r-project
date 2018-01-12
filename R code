@@ -1,0 +1,14 @@
+directory <- function(x){
+  setwd("D:/R/Company Test/specdata")
+}
+
+Complete <- function(x,y){
+  directory(x)
+  data.list.dataframes <- lapply(dir(),read.csv)
+  data.combine.dataframes <- do.call(rbind, data.list.dataframes)
+  data.clean <- na.omit(data.combine.dataframes)
+  data.clean[which(data.clean$ID == y),]
+  }
+
+
+Complete(directory, 9:10)
