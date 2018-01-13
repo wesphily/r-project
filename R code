@@ -7,8 +7,16 @@ Complete <- function(x,y){
   data.list.dataframes <- lapply(dir(),read.csv)
   data.combine.dataframes <- do.call(rbind, data.list.dataframes)
   data.clean <- na.omit(data.combine.dataframes)
-  data.clean[which(data.clean$ID == y),]
-  }
+  data.clean[which(data.clean$ID %in% y),]
+}
 
 
 Complete(directory, 9:10)
+
+
+Pollutantmean <- function(x,z,y){
+  df <- Complete(x,y)
+  mean(df[[z]])
+}
+
+Pollutantmean(directory, "nitrate", 9:10)
