@@ -1,7 +1,8 @@
+#function to set working directory
 directory <- function(x){
   setwd("D:/R/Company Test/specdata")
 }
-
+#function to create a list of dataframes, combine them, remove missing data, and print the clean data based on the selected ID
 Complete <- function(x,y){
   directory(x)
   data.list.dataframes <- lapply(dir(),read.csv)
@@ -13,7 +14,7 @@ Complete <- function(x,y){
 
 Complete(directory, 9:10)
 
-
+#Uses the previous functions and returns the mean value of the selected pollutant by ID
 Pollutantmean <- function(x,z,y){
   df <- Complete(x,y)
   mean(df[[z]])
