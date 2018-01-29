@@ -1,0 +1,26 @@
+library(ggplot2)
+setwd("C:/R/udemy sec 6/data")
+df <- read.csv("sec6.csv")
+
+filter1 <- (df$Genre == "action") | (df$Genre == "adventure") | (df$Genre == "animation") | (df$Genre == "comedy") | (df$Genre == "drama")
+
+filter2 <- (df$Studio == "Buena Vista Studios") | (df$Studio == "Fox") | (df$Studio == "Paramount Pictuers") |
+  (df$Studio == "Sony") | (df$Studio == "Universal") | (df$Studio == "WB")
+
+df2 <- df[filter1 & filter2,]
+head(df2)
+
+gg <- ggplot(data=df2, aes(x=Genre, y=Gross...US))
+gg <- gg + geom_jitter(aes(colour=Studio, size=Budget...mill.)) + geom_boxplot(alpha=0.5) +
+  xlab("Genre") + ylab("Gross % US") + ggtitle("Domestic Gross % by Genre") +
+  
+  theme(axis.title.x=element_text(colour="Blue", size=20), 
+        axis.title.y=element_text(colour="Blue", size=20),
+        axis.text.x=element_text(size=10),
+        axis.text.y=element_text(size=10),
+        plot.title = element_text(colour="Black", size=40),
+        legend.title=element_text(size=20), legend.text=element_text(size=10))
+
+
+gg$labels$size = "Budget $M"
+gg
